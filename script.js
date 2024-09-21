@@ -41,7 +41,6 @@ document.getElementById('contact-form').addEventListener('submit', function(even
     const email = document.getElementById('email').value;
     const message = document.getElementById('message').value;
 
-    // Ensure all fields are filled
     if (name && email && message) {
         const templateParams = {
             from_name: name,
@@ -52,10 +51,10 @@ document.getElementById('contact-form').addEventListener('submit', function(even
         emailjs.send('service_1jdnaya', 'template_rsxcylk', templateParams)
             .then(function(response) {
                 alert('Message Sent Successfully!');
-                document.getElementById('contact-form').reset(); // Optionally reset the form
+                document.getElementById('contact-form').reset(); 
             }, function(error) {
                 alert('Failed to send message, please try again.');
-                console.error('Error:', error); // Log the error to the console
+                console.error('Error:', error);
             });
     } else {
         alert('Please fill in all fields.');
