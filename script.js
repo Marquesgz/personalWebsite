@@ -36,14 +36,29 @@ window.onload = function() {
 // Form validation
 document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
+
     const name = document.getElementById('name').value;
     const email = document.getElementById('email').value;
     const message = document.getElementById('message').value;
 
+    // Ensure all fields are filled
     if (name && email && message) {
-        alert('Message Sent Successfully!');
-        // You can send the form data to an API or server here
+        const templateParams = {
+            from_name: name,
+            reply_to: email,
+            message: message,
+        };
+
+        emailjs.send('service_1jdnaya', 'template_rsxcylk', templateParams)
+            .then(function(response) {
+                alert('Message Sent Successfully!');
+                document.getElementById('contact-form').reset(); // Optionally reset the form
+            }, function(error) {
+                alert('Failed to send message, please try again.');
+                console.error('Error:', error); // Log the error to the console
+            });
     } else {
         alert('Please fill in all fields.');
     }
 });
+
