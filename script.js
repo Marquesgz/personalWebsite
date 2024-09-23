@@ -1,4 +1,3 @@
-// Data for portfolio projects
 const projects = [
     {
         title: "Project 1",
@@ -17,7 +16,6 @@ const projects = [
     }
 ];
 
-// Load projects into the portfolio
 window.onload = function() {
     const projectsContainer = document.getElementById('projects');
 
@@ -33,7 +31,6 @@ window.onload = function() {
     });
 };
 
-// Form validation
 document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
 
