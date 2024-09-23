@@ -1,60 +1,43 @@
-const projects = [
-    {
-        title: "Project 1",
-        description: "Description of project 1.",
-        link: "#"
-    },
-    {
-        title: "Project 2",
-        description: "Description of project 2.",
-        link: "#"
-    },
-    {
-        title: "Project 3",
-        description: "Description of project 3.",
-        link: "#"
-    }
-];
+const changingTextElement = document.querySelector('.changing-text');
 
-window.onload = function() {
-    const projectsContainer = document.getElementById('projects');
 
-    projects.forEach(project => {
-        const projectDiv = document.createElement('div');
-        projectDiv.classList.add('project');
-        projectDiv.innerHTML = `
-            <h3>${project.title}</h3>
-            <p>${project.description}</p>
-            <a href="${project.link}" target="_blank">View Project</a>
-        `;
-        projectsContainer.appendChild(projectDiv);
-    });
-};
+const words = ['Developer', 'Creator', 'Innovator', 'Thinker'];
 
-document.getElementById('contact-form').addEventListener('submit', function(event) {
-    event.preventDefault();
 
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
+const typingSpeed = 100; 
+const erasingSpeed = 50; 
+const delayBetweenWords = 2000; 
 
-    if (name && email && message) {
-        const templateParams = {
-            from_name: name,
-            reply_to: email,
-            message: message,
-        };
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
 
-        emailjs.send('service_1jdnaya', 'template_rsxcylk', templateParams)
-            .then(function(response) {
-                alert('Message Sent Successfully!');
-                document.getElementById('contact-form').reset(); 
-            }, function(error) {
-                alert('Failed to send message, please try again.');
-                console.error('Error:', error);
-            });
+function typeText() {
+  const currentWord = words[wordIndex];
+  
+  if (isDeleting) {
+   
+    changingTextElement.textContent = currentWord.substring(0, charIndex - 1);
+    charIndex--;
+
+    if (charIndex === 0) {
+      isDeleting = false;  
+      wordIndex = (wordIndex + 1) % words.length; 
+      setTimeout(typeText, typingSpeed); 
     } else {
-        alert('Please fill in all fields.');
+      setTimeout(typeText, erasingSpeed); 
     }
-});
+  } else {
+    changingTextElement.textContent = currentWord.substring(0, charIndex + 1);
+    charIndex++;
 
+    if (charIndex === currentWord.length) {
+      isDeleting = true;  
+      setTimeout(typeText, delayBetweenWords);  
+    } else {
+      setTimeout(typeText, typingSpeed);  
+    }
+  }
+}
+
+typeText();
