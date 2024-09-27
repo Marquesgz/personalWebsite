@@ -5,25 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>João M. Gomes - Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for social icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <section>
         <span>Hello, my name is</span>
         <h2>João Gomes</h2>
         <div class="intro">
-          <h1>And I am a <span class="changing-text"></span></h1>
+            <h1>And I am a <span class="changing-text"></span></h1>
         </div>
         <span class="bg-watermark">portfolio</span>
         <div class="cards">
-          <div class="card">
-            <img src="assets/JoãoGomesCoverLetter.png" alt="João Gomes">
-            <div class="card-content">
-              <h3>João Gomes</h3>
-              <p>fullstack developer</p>
+            <div class="card">
+                <img src="assets/JoãoGomesCoverLetter.png" alt="João Gomes">
+                <div class="card-content">
+                    <h3>João Gomes</h3>
+                    <p>Fullstack Developer</p>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/jmarquesgomes/" target="_blank" class="social-btn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/Marquesgz" target="_blank" class="social-btn">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div>
+              <section class="button-section">
+                <button class="btn download-cv" onclick="downloadCV()">Download Curriculum</button>
+                <button class="btn about-me" onclick="window.location.href='mainPage/mainPage.html'">About Me</button>
+            </section>
+            </div>
         </div>
-      </section>
-      <script src="script.js"></script>
+    </section>
+   
+    <script src="script.js"></script>
 </body>
 </html>

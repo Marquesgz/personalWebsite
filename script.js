@@ -39,5 +39,11 @@ function typeText() {
     }
   }
 }
+function downloadCV() {
+  const link = document.createElement('a');
+  link.href = 'assets/CVJoãoGomes.pdf'; 
+  link.download = 'CVJoãoGomes.pdf';
+  link.click();
+}
 
 typeText();
